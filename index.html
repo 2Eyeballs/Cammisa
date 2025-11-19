@@ -31,16 +31,16 @@
         }
         .location {
             font-size: 1rem;
-            margin-bottom: 0px;
+            margin-bottom: 5px;
             color: #cccccc;
         }
         .year {
             font-size: 1rem;
-            margin-bottom: 30px;
+            margin-bottom: 5px;
             color: #cccccc;
         }
         .email {
-            font-size: 1rem;
+            font-size: 1em;
             margin-bottom: 30px;
             color: #cccccc;
         }
@@ -130,26 +130,26 @@
             }
         }
         .organization-toggle {
-            text-align: center;
+            text-align: left;
             margin-bottom: 30px;
         }
         .toggle-button {
-            background: #f0f0f0;
+            background: transparent;
             border: 1px solid #cccccc;
             padding: 8px 16px;
-            margin: 0 5px;
+            margin: 0 5px 0 0;
             cursor: pointer;
             font-size: 0.9rem;
-            text-transform: uppercase;
+            text-transform: capitalize;
             letter-spacing: 1px;
             transition: all 0.3s ease;
         }
         .toggle-button:hover {
-            background: #e0e0e0;
+            background: #f5f5f5;
         }
         .toggle-button.active {
-            background: #666666;
-            color: white;
+            background: transparent;
+            color: #666666;
             border-color: #666666;
         }
         .year-view {
@@ -194,8 +194,8 @@
         </div>
 
         <div class="organization-toggle">
-            <button class="toggle-button active" id="categoryBtn" onclick="showCategoryView()">By Category</button>
-            <button class="toggle-button" id="yearBtn" onclick="showYearView()">By Year</button>
+            <button class="toggle-button active" id="categoryBtn" onclick="showCategoryView()">Category</button>
+            <button class="toggle-button" id="yearBtn" onclick="showYearView()">Year</button>
         </div>
 
         <div id="categoryView" class="category-view">
