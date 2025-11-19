@@ -129,6 +129,59 @@
                 font-size: 1rem;
             }
         }
+        .organization-toggle {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .toggle-button {
+            background: #f0f0f0;
+            border: 1px solid #cccccc;
+            padding: 8px 16px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .toggle-button:hover {
+            background: #e0e0e0;
+        }
+        .toggle-button.active {
+            background: #666666;
+            color: white;
+            border-color: #666666;
+        }
+        .year-view {
+            display: none;
+        }
+        .category-view {
+            display: block;
+        }
+        .year-section {
+            margin-bottom: 25px;
+        }
+        .year-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #666666;
+            border-bottom: 1px solid #eeeeee;
+            padding-bottom: 5px;
+        }
+        .year-entries {
+            margin-left: 0;
+        }
+        .year-entry {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .year-entry-category {
+            color: #888888;
+            font-style: italic;
+            margin-right: 8px;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
@@ -140,6 +193,12 @@
             <div class="email">c.buerhaus@gmail.com</div>
         </div>
 
+        <div class="organization-toggle">
+            <button class="toggle-button active" id="categoryBtn" onclick="showCategoryView()">By Category</button>
+            <button class="toggle-button" id="yearBtn" onclick="showYearView()">By Year</button>
+        </div>
+
+        <div id="categoryView" class="category-view">
         <div class="section">
             <div class="section-title" onclick="toggleSection(this)">About</div>
             <div class="section-content">
@@ -438,6 +497,9 @@
         <div class="section">
             <div class="section-title" onclick="toggleSection(this)">Publications and Writing</div>
             <div class="section-content">
+                         <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2026</span> <a href="https://literalmadness.info/?information" target="_blank">Madness is Sending Letters to You</a>. Literal Madness<span class="parenthetical"> Book</span>
+            </div>
             <div class="entry" style="margin-bottom: 2px;">
                 <span class="entry-year">2018</span>Camicissima Buerhaussss. Publisher Growth and Culture <span class="parenthetical">Book</span>
             </div>
@@ -448,7 +510,7 @@
                 <span class="entry-year">2017</span>Paz and Jo Whitehouse Veal/Setting the table Sky Red. Publisher Ben Schumacher and Jeff Joyal  <span class="parenthetical">LP</span>
             </div>
                     <div class="entry" style="margin-bottom: 2px;">
-                <span class="entry-year">2016</span>  <a href="https://www.brooklynrail.org/2016/12/music/limpe-fuchs-with-cammisa-buerhaus/" target="_blank">Limpe Fuchs with Cammisa Buerhaus</a>, Brooklyn Rail <span class="parenthetical">interview</span>
+                <span class="entry-year">2016</span> <a href="https://www.brooklynrail.org/2016/12/music/limpe-fuchs-with-cammisa-buerhaus/" target="_blank">Limpe Fuchs with Cammisa Buerhaus</a>, Brooklyn Rail <span class="parenthetical">interview</span>
             </div>
 
             </div>
@@ -582,6 +644,193 @@
             </div>
             </div>
         </div>
+        </div>
+
+        <div id="yearView" class="year-view">
+            <div class="year-section">
+                <div class="year-title">2026</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Exhibition]</span><a href="https://program-23.org/" target="_blank">Program 23,</a> <span class="venue">Stooj</span>, Berlin, DE <span class="parenthetical">screening situation</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, Untitled Film, Rachel Ashton, Berlin, DE <span class="parenthetical">feature</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Publications]</span><a href="https://literalmadness.info/?information" target="_blank">Madness is Sending Letters to You</a>. Literal Madness <span class="parenthetical">Book</span></div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2025</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Exhibition]</span><a href="https://program-23.org/" target="_blank">Program 23,</a> <span class="venue">Pech</span>, Vienna, AT <span class="parenthetical">screening situation</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Exhibition]</span><a href="https://emilyharveyfoundation.org/JS/pdfjs/web/viewer.html?file=/newyork/PDF/EmilyHarveyFoundation/0230.pdf&url=/newyork/Pages/emilyharveyfoundation.html&pos=0&nav=Past%20Exhibitions" target="_blank">Program 23,</a> <span class="venue">Emily Harvey Foundation</span>, NYC, USA <span class="parenthetical">screening situation</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Exhibition]</span><a href="https://www.contemporaryartlibrary.org/project/cammisa-buerhaus-at-osmos-new-york-60537" target="_blank">Headshots,</a> <span class="venue">Osmos</span>, NYC, USA <span class="parenthetical">solo</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Exhibition]</span><a href="https://www.contemporaryartlibrary.org/project/hackers-painters-at-chb-2-berlin-46936/5" target="_blank">Hackers & Painters,</a> <span class="venue">CHB</span>, Berlin, DE <span class="parenthetical">group</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span><a href="https://youtu.be/_rAFbzTB25A" target="_blank">BOOKWOMAN,</a> <span class="venue">kammer</span>, Hamburg, DE</div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span><a href="https://youtu.be/SukHKrfzjKs" target="_blank">Nights Like This V1,</a> <span class="venue">Juliet</span>, Berlin, DE</div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span><a href="https://www.contemporaryartlibrary.org/project/hackers-painters-at-chb-2-berlin-46936" target="_blank">The Maze,</a> <span class="venue">Hackers & Painters, CHB-2</span>, Berlin, DE</div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>BOOKWOMAN <span class="parenthetical">writing in development</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Nights Like This <span class="parenthetical">dramatic monologue</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, <a href="https://staedelschule.de/de/board/2024_film_about_love" target="_blank">Another Film About Love</a>, Rachel Ashton, Berlin, DE <span class="parenthetical">short</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Voice Over, Untitled Project, Santé Loisirs, Berlin, DE <span class="parenthetical">performance</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead Performer, <a href="https://cashmereradio.com/episode/constant-craving-4-w-erika-landstrom/" target="_blank">In The Morning</a>, Erika Landstrom, Cashmere Radio, Berlin, DE <span class="parenthetical">radio play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Archivist, Helane Levine-Keating, NYC, NY, USA <span class="parenthetical">ongoing</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Editor, <a href="https://www.theperimeter.co.uk/products/the-scissor-and-dadd" target="_blank">The Feather</a>, Alexandra Metcalf, The Perimeter Editions, London UK <span class="parenthetical">book</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Residencies]</span>Arts and Rec, Stamford, NY, USA</div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2024</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Exhibition]</span>Mala, <span class="venue">The Salon by NADA and The Community</span>, Paris, FR <span class="parenthetical">group</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>The Well-Dressed Wound, <span class="venue">Anorak</span>, Berlin, DE</div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>After Discipline <span class="parenthetical">Feature Film</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead Performer, <a href="https://www.ratundtat-kulturbuero.de/projekte/scratching-trees-2/" target="_blank">Scratching Trees at Lothringer 13</a>, Munich DE. Christiane Huber <span class="parenthetical">performance</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Four Films by Three American Filmmakers, <span class="venue">Rohre West</span>, Berlin, DE <span class="parenthetical">screening</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Artist's Scores, Scenarios and Diagrams, with Piper Marshall. Gstaad, CH <span class="parenthetical">visual art</span></div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2023</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>The Well-Dressed Wound, <span class="venue">KGB</span>, NYC, NY, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>Veteratrix, <span class="venue">Les Urbaines</span>. Lausanne, Switzerland.</div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Who Are the Dora, Doris? <span class="parenthetical">short film</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Dramaturg & Producer, Lemniscatic Elliptic, Callies, Berlin, DE. Colin Self <span class="parenthetical">performance</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>If You Please 2, <span class="venue">Anorak</span>. Berlin, DE <span class="parenthetical">screening</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>If You Please 1, <span class="venue">Studio Discoteca Flaming Star</span>. Berlin, DE <span class="parenthetical">screening</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Residencies]</span>Akademie Schloss Solitude. Stuttgart, DE</div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2022</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, <a href="https://jordanstrafer.com/Trailers" target="_blank">PEAK HEAVEN LOVE FOREVER</a>, Director Jordan Strafer <span class="parenthetical">short film</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, <a href="https://letterboxd.com/film/the-african-desperate/" target="_blank">The African Desperate</a>. Director Martine Syms <span class="parenthetical">feature</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Residencies]</span>AIR351. Cascais, PT</div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2021</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Exhibition]</span><a href="https://supermala.org/CammisaBuerhaus" target="_blank">Bloody Mary, Bloody Mary, Bloody Mary,</a> <span class="venue">Super Mala</span>, Lisbon, PT <span class="parenthetical">solo</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Voice Over, Superdream at Drei, Cologne DE. Cedric Eisenring <span class="parenthetical">exhibition</span></div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2020</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Optimistic Voices <span class="parenthetical">Play</span> <span class="parenthetical">postponed due to Covid-19</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Scriptwriter, Odds Are Good, Good are Odd. Director Leigh Ledare <span class="parenthetical">Delayed Covid-19</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Performer, Untitled. Director Nic Gaugnini. NYC, NY, USA <span class="parenthetical">performance Delayed Covid-19</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Supporting Actress, The Sandbox Has No Limits. Director Alex Zandi. <span class="parenthetical">Film</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, Untitled Project. Director Ken Okiishi, <span class="parenthetical">Film</span><span class="parenthetical">ongoing</span></div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2019</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Isis Virus <span class="parenthetical">Composition for Actors and 6 Person Choir</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Wild Flesh Presents: Various Artists <span class="parenthetical">LP</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Various Artists, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">LP</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Residencies]</span>Spirit Shop. Lisbon, PT</div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2018</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>The Maze <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Supporting Actress, <a href="https://www.alechall.info/works/opera/sick" target="_blank">Sick!</a> Director Vanessa Place and Jamison Webster. NYC, NY, USA <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, <a href="http://fpbjpc.org/shakespearethesadist.html">Shakespeare the Sadist</a>. Dir Mike Pollard. Emily Harvey Foundation. NYC, NY, USA <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, <a href="https://titreprovisoire.de/index.php/some-things-in-common-perhaps/2/" target="_blank">Some Things In Common Perhaps</a>, Director titre provisoire <span class="parenthetical">Short</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Publications]</span>Camicissima Buerhaussss. Publisher Growth and Culture <span class="parenthetical">Book</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Publications]</span>Death Lolz. Publisher Geothe Instutit <span class="parenthetical">Book</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Falling Star, Kayla Guthrie, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">EP</span></div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2017</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>NYCDBOS, <span class="venue">BarBar</span>. NYC, NY, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Monica Lewinsky Live at the Theater of Dionysus <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, Corporate Rokoko and the End of the Civic Project. Stephan Dillemuth. Directed by John Kelsey & Jim Fletcher. Ludlow 38. NYC, NY, USA <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Publications]</span>Paz and Jo Whitehouse Veal/Setting the table Sky Red. Publisher Ben Schumacher and Jeff Joyal <span class="parenthetical">LP</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Yuu, DaiKyoFuroShiki, NYC, NY, USA. <span class="parenthetical">LP</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Residencies]</span>Ludlow 38. Monica Lewinsky at Death Lolz. NYC, NY, USA</div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2016</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Exhibition]</span><a href="http://hyle.mobi/2016_11_25/" target="_blank">Private Lives,</a> <span class="venue">'ΥΛΗ[matter]HYLE</span>, Athens, GR <span class="parenthetical">solo</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>West Coast Civilization Shuffle Tour w/ Tamio Shiraishi</div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Performance by Appointment <span class="parenthetical">Play</span> <span class="venue">Moitey</span>, NYC, NY, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, <a href="https://www.nycplayers.org/projects/the-evening/" target="_blank">The Evening</a>. Director Richard Maxwell & The NYC Players. <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, Motherland. Director Cecilia Corrigan. Issue Project Room. NYC, NY, USA <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead, Motherland. Director Cecilia Corrigan. Bomb Magazine. <span class="parenthetical">Video</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Publications]</span><a href="//brooklynrail.org/2016/12/music/limpe-fuchs-with-cammisa-buerhaus/" target="_blank">Limpe Fuchs with Cammisa Buerhaus</a>, Brooklyn Rail <span class="parenthetical">interview</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Residencies]</span>Pioneer Works. NYC, NY, USA</div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2015</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>DaiKyoFuroShiki Released <span class="venue">Signal Gallery.</span> NYC, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span><a href="https://www.youtube.com/watch?v=io63d00p35k" target="_blank">DaiKyoFuroShiki,</a> <span class="venue">Celtic Gasthaus</span>, NYC, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Private Lives <span class="parenthetical">Play & Film</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Lead Actress, The Evening. Director Richard Maxwell & The NYC Players. <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Actress, The Roast of Felix Bernstein. Dir Felix Bernstein. Artists Space. NYC, NY, USA <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Professional CV]</span>Artist Assistant. The Damned. Stephan Dillemuth. Reena Spaulings. NYC, NY, USA <span class="parenthetical">Exhibition</span></div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2014</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>DaiKyoFuroShiki Japanese Tour w/ Tamio Shiraishi</div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Full Disclosure <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Switchers <span class="parenthetical">Play</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>DaiKyoFuroShiki. Yuu <span class="parenthetical">LP</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>DaiKyoFuroShiki, Live in Japan <span class="parenthetical">Cassette</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>DaiKyoFuroShiki, Year Zero <span class="parenthetical">Cassette</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>DaiKyoFuroShiki, DaiKyoFuroShiki <span class="parenthetical">Cassette</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Rich Kitchen, Kitchen Steve, Geo Wyeth, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Live in Japan, DaiKyoFuroShiki, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Herstory Already, 2Pretty, Colin Self, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Serpentinit, Limpe Fuchs, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Curation]</span>Vines, Haribo, Raul DeNieves, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Residencies]</span>MoMA PS1, Expo 1: Colony. With Georgia Sagri and David Graeber. NYC, NY, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Residencies]</span>Cage, Sound Art & Organizer. NYC, NY, USA</div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2013</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>10 Years Alive on the Infinite Plain, . Brooklyn, NY, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>Expo 1: Colony, <span class="venue">MoMA PS1</span>, NYC, NY, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>Final Notice 3, <span class="venue">Cage</span>, NYC, NY, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>Bunkerweltanschauung (Bunker Ideology), <span class="venue">MoMA PS1</span>. NYC, NY, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Eliza and Parry, Eliza and Parry <span class="parenthetical">Cassette</span></div>
+                    <div class="year-entry"><span class="year-entry-category">[Works]</span>Eliza and Parry, May Day <span class="parenthetical">Cassette</span></div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">2012</div>
+                <div class="year-entries">
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span>The Stone. Curated by Ron Anderson/Will Connell Jr. NYC, NY, USA</div>
+                    <div class="year-entry"><span class="year-entry-category">[Performance]</span><a href="https://www.youtube.com/watch?v=LjuKk8hyxBs" target="_blank">Voices and Echoes; Gozo Yoshimasu, Tamio Shiraishi, Cammisa Buerhaus Trio</a> <span class="venue">Issue Project Room</span> NYC, NY, USA</div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script>
@@ -598,6 +847,21 @@
                 content.classList.add('collapsed');
                 titleElement.classList.add('collapsed');
             }
+        }
+
+        // Toggle between category and year views
+        function showCategoryView() {
+            document.getElementById('categoryView').style.display = 'block';
+            document.getElementById('yearView').style.display = 'none';
+            document.getElementById('categoryBtn').classList.add('active');
+            document.getElementById('yearBtn').classList.remove('active');
+        }
+
+        function showYearView() {
+            document.getElementById('categoryView').style.display = 'none';
+            document.getElementById('yearView').style.display = 'block';
+            document.getElementById('categoryBtn').classList.remove('active');
+            document.getElementById('yearBtn').classList.add('active');
         }
 
         // Initialize all sections as collapsed
