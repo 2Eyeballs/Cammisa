@@ -9,57 +9,534 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background: white;
             margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
+            padding: 40px 20px;
+            color: #666666;
+            line-height: 1.4;
         }
         .container {
-            max-width: 600px;
-            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        h1 {
+        .header {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        .name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-style: italic;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
             color: #ff1493;
-            letter-spacing: 8px;
+        }
+        .location {
+            font-size: 1rem;
+            margin-bottom: 0px;
+            color: #cccccc;
+        }
+        .year {
+            font-size: 1rem;
             margin-bottom: 30px;
-            font-size: 1.2rem;
+            color: #cccccc;
+        }
+        .email {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            color: #cccccc;
+        }
+        .section {
+            margin-bottom: 35px;
+        }
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding-right: 20px;
+            transition: color 0.3s ease;
+        }
+        .section-title:hover {
+            color: #888888;
+        }
+        .section-title::after {
+            content: '−';
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-weight: normal;
+            transition: transform 0.3s ease;
+        }
+        .section-title.collapsed::after {
+            content: '+';
+        }
+        .section-content {
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .section-content.collapsed {
+            max-height: 0;
+        }
+        .entry {
+            margin-bottom: 15px;
+        }
+        .entry-year {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .entry-title {
+            font-weight: bold;
+        }
+        .entry-details {
+            margin-left: 0;
+        }
+        .sub-entry {
+            margin-left: 20px;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .venue {
             font-style: italic;
         }
-        p {
-            color: #888888;
+        .parenthetical {
+            color: #bbbbbb;
+            font-style: italic;
             font-size: 0.9rem;
-            margin: 20px 0;
+        }
+        .bio-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
         a {
-            color: #ff1493;
+            color: #666666;
             text-decoration: underline;
         }
         a:hover {
             color: #888888;
         }
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1rem;
-                letter-spacing: 4px;
+            .container {
+                padding: 20px 10px;
             }
-            p {
-                font-size: 0.8rem;
+            .name {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+            .section-title {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>CAMMISA BUERHAUS</h1>
-       <p>Cammisa Buerhaus is a theatre artist, writer, and visual artist. For the past 10 years Buerhaus has 
-    worked between artistic disciplines, developing a hybrid practice across harsh noise, performance, 
-    and visual art. Buerhaus writes and directs confessional-performative psychodramas written in her 
-    signature hallucinatory prose. </p>   
-        <p>c.buerhaus@gmail.com</p>
-        <p><a href="cv.html" target="_blank">CV</a></p>
-    
+        <div class="header">
+            <div class="name">CAMMISA BUERHAUS</div>
+            <div class="location">New Kingston, NY</div>
+            <div class="year">1986</div>
+            <div class="email">c.buerhaus@gmail.com</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">About</div>
+            <div class="section-content">
+                <p class="bio-text">Cammisa Buerhaus is a theatre artist, writer, and visual artist. For the past 10 years Buerhaus has worked between artistic disciplines, developing a hybrid practice across harsh noise, performance, and visual art. Buerhaus writes and directs confessional-performative psychodramas written in her signature hallucinatory prose.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Exhibition</div>
+            <div class="section-content">
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2026</span><a href="https://program-23.org/" target="_blank">Program 23,</a><span class="venue"> Stooj</span>, Berlin, DE
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2025</span><a href="https://program-23.org/" target="_blank">Program 23,</a> <span class="venue">Pech</span>, Vienna, AT
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://emilyharveyfoundation.org/JS/pdfjs/web/viewer.html?file=/newyork/PDF/EmilyHarveyFoundation/0230.pdf&url=/newyork/Pages/emilyharveyfoundation.html&pos=0&nav=Past%20Exhibitions" target="_blank">Program 23,</a> <span class="venue">Emily Harvey Foundation</span>, NYC, USA
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.contemporaryartlibrary.org/project/cammisa-buerhaus-at-osmos-new-york-60537" target="_blank">Headshots,</a> <span class="venue">Osmos</span>, NYC, NY, USA <span class="parenthetical">solo</span>
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.contemporaryartlibrary.org/project/hackers-painters-at-chb-2-berlin-46936/5" target="_blank">Hackers & Painters,</a> <span class="venue">CHB</span>, Berlin, DE <span class="parenthetical">group</span>
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2024</span>Mala, <span class="venue">The Salon by NADA and The Community</span>, Paris, FR <span class="parenthetical">group</span>
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2021</span><a href="https://supermala.org/CammisaBuerhaus" target="_blank">Bloody Mary, Bloody Mary, Bloody Mary,</a> <span class="venue">Super Mala</span>, Lisbon, PT <span class="parenthetical">solo</span>
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2016</span><a href="http://hyle.mobi/2016_11_25/" target="_blank">Private Lives,</a> <span class="venue">'ΥΛΗ[matter]HYLE</span>, Athens, GR <span class="parenthetical">solo</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Performance</div>
+            <div class="section-content">
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2025</span><a href="https://youtu.be/_rAFbzTB25A" target="_blank">BOOKWOMAN,</a> <span class="venue">kammer</span>, Hamburg, DE
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://youtu.be/SukHKrfzjKs" target="_blank">Nights Like This V1,</a> <span class="venue">Juliet</span>, Berlin, DE
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.contemporaryartlibrary.org/project/hackers-painters-at-chb-2-berlin-46936" target="_blank">The Maze,</a> <span class="venue">Hackers & Painters, CHB-2</span>, Berlin, DE
+            </div>
+        
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2024</span>The Well-Dressed Wound, <span class="venue">Anorak</span>, Berlin, DE
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2023</span>The Well-Dressed Wound, <span class="venue">KGB</span>, NYC, NY, USA
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Veteratrix, <span class="venue">Les Urbaines</span>. Lausanne, Switzerland.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2017</span>NYCDBOS, <span class="venue">BarBar</span>. NYC, NY, USA
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2016</span>West Coast Civilization Shuffle Tour w/ Tamio Shiraishi
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Performed at:</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Human Resources. Los Angeles, CA</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">OR Gallery, Vancouver, Canada</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 8px; color: #888888;">Satsop Nuclear Power Plant. Satsop, WA.</div>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2015</span>Signal Gallery, DaiKyoFuroShiki Released. NYC, NY, USA.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2014</span>DaiKyoFuroShiki Japanese Tour w/ Tamio Shiraishi
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Performed at:</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">High Frequency Flutter, <span class="venue">SuperDeluxe</span>. Tokyo, Japan</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Tamio Shiraishi and Cammisa Buerhaus, <span class="venue">EarthdomTokyo</span>, Japan</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">SurplusValueResolvingFactory, <span class="venue">Last Waltz</span>. Tokyo, Japan</div>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2013</span>10 Years Alive on the Infinite Plain, . Brooklyn, NY, USA
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expo 1: Colony, <span class="venue">MoMA PS1</span>, NYC, NY, USA
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Final Notice 3, <span class="venue">Cage</span>, NYC, NY, USA
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bunkerweltanschauung (Bunker Ideology), <span class="venue">MoMA PS1</span>. NYC, NY, USA
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2012</span>The Stone. Curated by Ron Anderson/Will Connell Jr. NYC, NY, USA
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.youtube.com/watch?v=LjuKk8hyxBs" target="_blank">Voices and Echoes; Gozo Yoshimasu, Tamio Shiraishi, Cammisa Buerhaus Trio </a> <span class="venue">Issue Project Room</span> NYC, NY, USA
+            </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Works</div>
+            <div class="section-content">
+            <div class="entry" style="margin-bottom: 2px;">
+                 <span class="entry-year">2025</span>BOOKWOMAN <span class="parenthetical"> writing in development</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                 <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nights Like This <span class="parenthetical"> dramatic monologue</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2024</span>After Discipline <span class="parenthetical">Feature Film</span>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Screened at:</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Yale University, CT, USA</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">KAJE, NYC, NY, USA</div>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2023</span>Who Are the Dora, Doris? <span class="parenthetical">short film</span>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Screened at:</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Project Space Festival, <span class="venue">Anorak</span>, Berlin, DE, 2023</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Stuttgart International Film Festival, Stuttgart DE, 2023</div>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2020</span>Optimistic Voices <span class="parenthetical">Play</span> <span class="parenthetical">postponed due to Covid-19</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2019</span>Isis Virus <span class="parenthetical">Composition for Actors and 6 Person Choir</span>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Performed at:</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Rua Das Gavoitas 6, Lisbon, PT, 2020</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Fondation Perdu, Amsterdam NL, 2019</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Montez Press, NYC, USA, 2019</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Wild Flesh Presents: Various Artists <span class="parenthetical">LP</span></div>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2018</span>The Maze <span class="parenthetical">Play</span>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Performed at:</div>
+                   <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">CHB-2, Berlin, DE, 2025</div>
+                  <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Mala, Lisbon, PT, 2022</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Air 351, Lisbon, PT, 2021</div>
+                    <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Spirit Shop, Lisbon, PT, 2019</div>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2017</span>Monica Lewinsky Live at the Theater of Dionysus <span class="parenthetical">Play</span>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Performed/Screened at:</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Rohre West, Berlin, DE, 2024</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Ludlow 38, NYC, USA, 2017</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Celine Gallery, Glasgow, UK, 2018</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Metro Pictures, NYC, USA, 2018</div>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2016</span>Performance by Appointment <span class="parenthetical">Play</span> <span class="venue">Moitey</span>, NYC, NY, USA
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2015</span>Private Lives <span class="parenthetical">Play & Film</span>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Performed/Screened at:</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Hyle, Athens, Greece, 2017</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">The Kitchen, NYC, USA, 2015</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Anthology Film Archive, NYC, USA, 2014</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Cooper Union Rose Auditorium, NYC,USA, 2014</div>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2014</span>Full Disclosure <span class="parenthetical">Play</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Switchers <span class="parenthetical">Play</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DaiKyoFuroShiki. Yuu <span class="parenthetical">LP</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DaiKyoFuroShiki, Live in Japan <span class="parenthetical">Cassette</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DaiKyoFuroShiki, Year Zero <span class="parenthetical">Cassette</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DaiKyoFuroShiki, DaiKyoFuroShiki <span class="parenthetical">Cassette</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2013</span>Eliza and Parry, Eliza and Parry <span class="parenthetical">Cassette</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eliza and Parry, May Day <span class="parenthetical">Cassette</span>
+            </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Professional CV</div>
+            <div class="section-content">
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2026</span>Lead, Untitled Film, Rachel Ashton, Berlin, DE <span class="parenthetical">feature</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2025</span>Lead, <a href="https://staedelschule.de/de/board/2024_film_about_love" target="_blank">Another Film About Love</a>, Rachel Ashton, Berlin, DE <span class="parenthetical">short</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voice Over, Untitled Project, Santé Loisirs, Berlin, DE <span class="parenthetical">performance</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lead Performer, <a href="https://cashmereradio.com/episode/constant-craving-4-w-erika-landstrom/" target="_blank">In The Morning</a>, Erika Landstrom, Cashmere Radio, Berlin, DE <span class="parenthetical">radio play</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Archivist, Helane Levine-Keating, NYC, NY, USA <span class="parenthetical">ongoing</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editor, <a href="https://www.theperimeter.co.uk/products/the-scissor-and-dadd" target="_blank">The Feather</a>, Alexandra Metcalf, The Perimeter Editions, London UK <span class="parenthetical">book</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2016</span>Lead, <a href="https://www.nycplayers.org/projects/the-evening/" target="_blank">The Evening</a>. Director Richard Maxwell & The NYC Players. <span class="parenthetical">Play</span>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Performed at:</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Onassis Cultural Center, Athens</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Nanterre-Amandiers, Nanterre</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Theatre Garonne, Toulouse</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">La Filature, Mulhouse</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">KunstenFestival Des Arts, Brussels</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Arena Del Sol, Bologna</div>
+                <div class="sub-entry" style="margin-top: 0px; margin-bottom: 0px; color: #888888;">Culturegest, Lisbon</div>
+            </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Publications and Writing</div>
+            <div class="section-content">
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2018</span>Camicissima Buerhaussss. Publisher Growth and Culture <span class="parenthetical">Book</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Death Lolz. Publisher Geothe Instutit <span class="parenthetical">Book</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2017</span>Paz and Jo Whitehouse Veal/Setting the table Sky Red. Publisher Ben Schumacher and Jeff Joyal  <span class="parenthetical">LP</span>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Curation</div>
+            <div class="section-content">
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2024</span>Four Films by Three American Filmmakers, <span class="venue">Rohre West</span>, Berlin, DE <span class="parenthetical">screening</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Artist's Scores, Scenarios and Diagrams, with Piper Marshall. Gstaad, CH <span class="parenthetical">visual art</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2023</span>If You Please 2, <span class="venue">Anorak</span>. Berlin, DE <span class="parenthetical">screening</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If You Please 1, <span class="venue">Studio Discoteca Flaming Star</span>. Berlin, DE <span class="parenthetical">screening</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2019</span>Various Artists, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">LP</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2018</span>Falling Star, Kayla Guthrie, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">EP</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2017</span>Yuu, DaiKyoFuroShiki, NYC, NY, USA. <span class="parenthetical">LP</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year">2014</span>Rich Kitchen, Kitchen Steve, Geo Wyeth, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Live in Japan, DaiKyoFuroShiki, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Herstory Already, 2Pretty, Colin Self, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Serpentinit, Limpe Fuchs, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vines, Haribo, Raul DeNieves, <span class="venue">Wild Flesh Productions</span>, NYC, NY, USA. <span class="parenthetical">C-20</span>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Residencies</div>
+            <div class="section-content">
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2025</span>Arts and Rec, Stamford, NY, USA
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2023</span>Akademie Schloss Solitude. Stuttgart, DE
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2022</span>AIR351. Cascais, PT
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2019</span>Spirit Shop. Lisbon, PT
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2017</span>Ludlow 38. Monica Lewinsky at Death Lolz. NYC, NY, USA
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2016</span>Pioneer Works. NYC, NY, USA
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year">2014</span>MoMA PS1, Expo 1: Colony. With Georgia Sagri and David Graeber. NYC, NY, USA
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cage, Sound Art & 
+                     Organizer. NYC, NY, USA
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Education</div>
+            <div class="section-content">
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year"></span>MFA, Music/Sound, Milton Avery Graduate School of the Arts at Bard College
+                </div>
+                <div class="entry" style="margin-bottom: 2px;">
+                    <span class="entry-year"></span>BA, Media Studies, Eugene Lang at the New School
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Press</div>
+            <div class="section-content">
+            <div class="entry" style="margin-bottom: 2px;">
+                Various Artists: Wild Flesh Productions, <a href="https://www.tinymixtapes.com/music-review/various-artists-wild-flesh-productions-various-artists" target="_blank">Tiny Mix Tapes</a>, 2019.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                From The Margins: Wild Flesh Productions Spins Sounds From 'Various Artists', <a href="http://www.artnews.com/2019/05/23/from-the-margins-wild-flesh-productions-spins-sounds-from-various-artists/" target="_blank">Artnews</a>, 2019.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                Dynamic Duo, <a href="https://www.newyorker.com/magazine/2015/03/16/dynamic-duo" target="_blank">The New Yorker</a>, 2015.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                Review: In Richard Maxwell's 'The Evening,' Going Gentle Into the Night, or Not, <a href="https://www.nytimes.com/2015/03/18/theater/review-in-richard-maxwells-the-evening-going-gentle-into-the-night-or-not.html" target="_blank">The New York Times</a>, 2015.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                Richard Maxwell Takes You to Hell and Back in The Evening, <a href="https://www.villagevoice.com/2015/03/18/richard-maxwell-takes-you-to-hell-and-back-in-the-evening/" target="_blank">Village Voice</a>, 2015.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                Bar Exam: Richard Maxwell's The Evening, <a href="https://hyperallergic.com/192483/bar-exam-richard-maxwells-the-evening/" target="_blank">Hyperallergic</a>, 2015.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                Death Becomes Her, <a href="https://www.artforum.com/performance/jennifer-krasinski-on-richard-maxwell-s-the-evening-51081" target="_blank">Artforum</a>, 2015.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                The Space Between: A Profile of Cammisa Buerhaus, <a href="https://hyperallergic.com/308665/the-space-between-a-profile-of-cammisa-buerhaus/" target="_blank">Hyperallergic</a>, 2016.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                Wir Sind Gar Nicht Hier, <a href="https://www.textezurkunst.de/99/wir-sind-gar-nicht-hier/" target="_blank">Texte Zur Kunst</a>, 2015. <span class="parenthetical">in print</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                Soundcheck, <a href="https://www.thewire.co.uk/issues/379" target="_blank">The Wire: Adventures in Modern Music</a>, 2015 <span class="parenthetical">in print</span>
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                200 Words, <a href="http://the-out-door.tumblr.com/post/125767499465/200-words-daikyofuroshiki" target="_blank">Pitchfork</a>, 2015.
+            </div>
+            <div class="entry" style="margin-bottom: 2px;">
+                Top 10, <a href="https://www.artforum.com/print/201408/jessie-stead-48210" target="_blank">Artforum</a>, 2014.
+            </div>
+            </div>
+        </div>
     </div>
+    
+    <script>
+        function toggleSection(titleElement) {
+            const content = titleElement.nextElementSibling;
+            const isCollapsed = content.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                content.classList.remove('collapsed');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                titleElement.classList.remove('collapsed');
+            } else {
+                content.style.maxHeight = '0px';
+                content.classList.add('collapsed');
+                titleElement.classList.add('collapsed');
+            }
+        }
+
+        // Initialize all sections as collapsed
+        document.addEventListener('DOMContentLoaded', function() {
+            const contents = document.querySelectorAll('.section-content');
+            const titles = document.querySelectorAll('.section-title');
+            
+            contents.forEach(content => {
+                content.classList.add('collapsed');
+                content.style.maxHeight = '0px';
+            });
+            
+            titles.forEach(title => {
+                title.classList.add('collapsed');
+            });
+        });
+    </script>
 </body>
 </html>
