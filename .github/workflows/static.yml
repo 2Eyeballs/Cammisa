@@ -33,10 +33,15 @@ jobs:
         working-directory: ./blog
         run: bundle exec jekyll build
       
+      - name: Prepare deployment
+        run: |
+          mkdir -p deploy/blog
+          cp -r blog/_site/* deploy/blog/
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './blog/_site'
+          path: './deploy'
   
   deploy:
     environment:
