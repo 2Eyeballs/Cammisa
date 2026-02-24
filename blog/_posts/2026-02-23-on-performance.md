@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On Performance as Documentation"
-date: 2026-02-24 14:30:00 -0500
+date: 2026-02-23 14:30:00 -0500
 categories: writing performance
 ---
 
