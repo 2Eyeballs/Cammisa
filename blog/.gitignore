@@ -1,0 +1,10 @@
+# Ignore files for publication
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+*.gem
+*.gemspec
+Gemfile.lock
+node_modules/
+vendor/
+.DS_Store

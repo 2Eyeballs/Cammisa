@@ -1,0 +1,26 @@
+# Jekyll Configuration
+title: Cammisa Buerhaus Blog
+description: Writing and reflections
+baseurl: "/blog"
+url: "https://cammisahome.github.io"
+author: Cammisa Buerhaus
+
+# Build settings
+markdown: kramdown
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude files
+exclude:
+  - .github
+  - node_modules
+  - vendor
