@@ -1,7 +1,7 @@
 # Jekyll Configuration
 title: Cammisa Buerhaus Blog
 description: Writing and reflections
-baseurl: "/blog"
+baseurl: "/blog_public"
 url: "https://cammisabuer.haus"
 author: Cammisa Buerhaus
 

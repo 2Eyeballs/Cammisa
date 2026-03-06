@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://cammisabuer.haus/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cammisabuer.haus/blog/" rel="alternate" type="text/html" /><updated>2026-03-06T15:42:34+01:00</updated><id>https://cammisabuer.haus/blog/feed.xml</id><title type="html">Cammisa Buerhaus Blog</title><subtitle>Writing and reflections</subtitle><author><name>Cammisa Buerhaus</name></author><entry><title type="html">On Performance as Documentation</title><link href="https://cammisabuer.haus/blog/2026/02/23/on-performance/" rel="alternate" type="text/html" title="On Performance as Documentation" /><published>2026-02-23T20:30:00+01:00</published><updated>2026-02-23T20:30:00+01:00</updated><id>https://cammisabuer.haus/blog/2026/02/23/on-performance</id><content type="html" xml:base="https://cammisabuer.haus/blog/2026/02/23/on-performance/"><![CDATA[<p>Performance exists in time. It cannot be held, archived, or replayed exactly as it occurred. Yet we document it obsessively—through video, photography, written description—trying to capture something that is fundamentally ephemeral.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://cammisabuer.haus/blog_public/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cammisabuer.haus/blog_public/" rel="alternate" type="text/html" /><updated>2026-03-06T15:49:24+01:00</updated><id>https://cammisabuer.haus/blog_public/feed.xml</id><title type="html">Cammisa Buerhaus Blog</title><subtitle>Writing and reflections</subtitle><author><name>Cammisa Buerhaus</name></author><entry><title type="html">On Performance as Documentation</title><link href="https://cammisabuer.haus/blog_public/2026/02/23/on-performance/" rel="alternate" type="text/html" title="On Performance as Documentation" /><published>2026-02-23T20:30:00+01:00</published><updated>2026-02-23T20:30:00+01:00</updated><id>https://cammisabuer.haus/blog_public/2026/02/23/on-performance</id><content type="html" xml:base="https://cammisabuer.haus/blog_public/2026/02/23/on-performance/"><![CDATA[<p>Performance exists in time. It cannot be held, archived, or replayed exactly as it occurred. Yet we document it obsessively—through video, photography, written description—trying to capture something that is fundamentally ephemeral.</p>
 
 <h2 id="the-problem-with-documentation">The Problem with Documentation</h2>
 
@@ -18,7 +18,7 @@
 
 <hr />
 
-<p><em>What are your thoughts on performance documentation? I’d love to hear your perspective.</em></p>]]></content><author><name>Cammisa Buerhaus</name></author><category term="writing" /><category term="performance" /><summary type="html"><![CDATA[Performance exists in time. It cannot be held, archived, or replayed exactly as it occurred. Yet we document it obsessively—through video, photography, written description—trying to capture something that is fundamentally ephemeral.]]></summary></entry><entry><title type="html">Welcome to the Blog</title><link href="https://cammisabuer.haus/blog/2026/02/22/welcome/" rel="alternate" type="text/html" title="Welcome to the Blog" /><published>2026-02-22T16:00:00+01:00</published><updated>2026-02-22T16:00:00+01:00</updated><id>https://cammisabuer.haus/blog/2026/02/22/welcome</id><content type="html" xml:base="https://cammisabuer.haus/blog/2026/02/22/welcome/"><![CDATA[<p>This is your first blog post. You can write in <strong>Markdown</strong> format.</p>
+<p><em>What are your thoughts on performance documentation? I’d love to hear your perspective.</em></p>]]></content><author><name>Cammisa Buerhaus</name></author><category term="writing" /><category term="performance" /><summary type="html"><![CDATA[Performance exists in time. It cannot be held, archived, or replayed exactly as it occurred. Yet we document it obsessively—through video, photography, written description—trying to capture something that is fundamentally ephemeral.]]></summary></entry><entry><title type="html">Welcome to the Blog</title><link href="https://cammisabuer.haus/blog_public/2026/02/22/welcome/" rel="alternate" type="text/html" title="Welcome to the Blog" /><published>2026-02-22T16:00:00+01:00</published><updated>2026-02-22T16:00:00+01:00</updated><id>https://cammisabuer.haus/blog_public/2026/02/22/welcome</id><content type="html" xml:base="https://cammisabuer.haus/blog_public/2026/02/22/welcome/"><![CDATA[<p>This is your first blog post. You can write in <strong>Markdown</strong> format.</p>
 
 <h2 id="headers-work-like-this">Headers work like this</h2>
 
@@ -36,4 +36,26 @@
 
 <p>To create a new post, add a file in the <code class="language-plaintext highlighter-rouge">_posts</code> directory with the format <code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.md</code>.</p>
 
-<p>Edit this post or delete it and create your own!</p>]]></content><author><name>Cammisa Buerhaus</name></author><category term="writing" /><summary type="html"><![CDATA[This is your first blog post. You can write in Markdown format.]]></summary></entry></feed>
+<p>Edit this post or delete it and create your own!</p>]]></content><author><name>Cammisa Buerhaus</name></author><category term="writing" /><summary type="html"><![CDATA[This is your first blog post. You can write in Markdown format.]]></summary></entry><entry><title type="html">Almost my Birthday</title><link href="https://cammisabuer.haus/blog_public/2026/02/22/almost-birthday/" rel="alternate" type="text/html" title="Almost my Birthday" /><published>2026-02-22T16:00:00+01:00</published><updated>2026-02-22T16:00:00+01:00</updated><id>https://cammisabuer.haus/blog_public/2026/02/22/almost-birthday</id><content type="html" xml:base="https://cammisabuer.haus/blog_public/2026/02/22/almost-birthday/"><![CDATA[<p>This is my first blog post. You can write in <strong>Markdown</strong> format.</p>
+
+<h2 id="this-is-my-first-blog-post">This is my first blog post.</h2>
+
+<p>It’s actually my 50th or sixtieth blog post, as I used to keep a tumblr.</p>
+
+<h2 id="headers-work-like-this">Headers work like this</h2>
+
+<p>You can add:</p>
+<ul>
+  <li>Bullet points</li>
+  <li>Images</li>
+  <li>Code blocks</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_world</span>
+  <span class="nb">puts</span> <span class="s2">"Hello from Jekyll!"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>To create a new post, add a file in the <code class="language-plaintext highlighter-rouge">_posts</code> directory with the format <code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.md</code>.</p>
+
+<p>Edit this post or delete it and create your own!</p>]]></content><author><name>Cammisa Buerhaus</name></author><category term="writing" /><summary type="html"><![CDATA[This is my first blog post. You can write in Markdown format.]]></summary></entry></feed>
