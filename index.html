@@ -4,200 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cammisa Buerhaus</title>
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: white;
-            margin: 0;
-            padding: 40px 20px;
-            color: #666666;
-            line-height: 1.4;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .header {
-            text-align: left;
-            margin-bottom: 40px;
-        }
-        .name {
-            font-size: 1.8rem;
-            font-weight: bold;
-            font-style: italic;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-            color: #ff1493;
-        }
-        .location {
-            font-size: 1rem;
-            margin-bottom: 5px;
-            color: #cccccc;
-        }
-        .year {
-            font-size: 1rem;
-            margin-bottom: 5px;
-            color: #cccccc;
-        }
-        .email {
-            font-size: 1em;
-            margin-bottom: 30px;
-            color: #cccccc;
-        }
-        .section {
-            margin-bottom: 35px;
-        }
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            user-select: none;
-            position: relative;
-            padding-right: 20px;
-            transition: color 0.3s ease;
-        }
-        .section-title:hover {
-            color: #888888;
-        }
-        .section-title::after {
-            content: '−';
-            position: absolute;
-            right: 0;
-            top: 0;
-            font-weight: normal;
-            transition: transform 0.3s ease;
-        }
-        .section-title.collapsed::after {
-            content: '+';
-        }
-        .section-content {
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        .section-content.collapsed {
-            max-height: 0;
-        }
-        .entry {
-            margin-bottom: 15px;
-        }
-        .entry-year {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        .entry-title {
-            font-weight: bold;
-        }
-        .entry-details {
-            margin-left: 0;
-        }
-        .sub-entry {
-            margin-left: 20px;
-            margin-top: 5px;
-            font-size: 0.95rem;
-        }
-        .venue {
-            font-style: italic;
-        }
-        .parenthetical {
-            color: #bbbbbb;
-            font-style: italic;
-            font-size: 0.9rem;
-        }
-        .bio-text {
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        a {
-            color: #666666;
-            text-decoration: underline;
-        }
-        a:hover {
-            color: #888888;
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 10px;
-            }
-            .name {
-                font-size: 1.5rem;
-                letter-spacing: 2px;
-            }
-            .section-title {
-                font-size: 1rem;
-            }
-        }
-        .organization-toggle {
-            text-align: left;
-            margin-bottom: 30px;
-        }
-        .toggle-button {
-            background: transparent;
-            border: 1px solid #cccccc;
-            padding: 8px 16px;
-            margin: 0 5px 0 0;
-            cursor: pointer;
-            font-size: 0.9rem;
-            text-transform: capitalize;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        .toggle-button:hover {
-            background: #f5f5f5;
-        }
-        .toggle-button.active {
-            background: transparent;
-            color: #666666;
-            border-color: #666666;
-        }
-        .year-view {
-            display: none;
-        }
-        .category-view {
-            display: block;
-        }
-        .year-section {
-            margin-bottom: 25px;
-        }
-        .year-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #666666;
-            border-bottom: 1px solid #eeeeee;
-            padding-bottom: 5px;
-        }
-        .year-entries {
-            margin-left: 0;
-        }
-        .year-entry {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-        .year-entry-category {
-            color: #888888;
-            font-style: italic;
-            margin-right: 8px;
-            font-size: 0.85rem;
-        }
-        .flower-icon {
-            height: 5rem;
-            width: 5rem;
-            padding-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="name">CAMMISA BUERHAUS</div>
-            <div class="location">b. New Kingston, NY, USA
-          
-                        <div class="location">Working in Berlin, DE and NYC, USA</div>
-
-            <div class="email">c.buerhaus@gmail.com</div>
+<div class="name">CAMMISA BUERHAUS</div>
+<div class="location">b. New Kingston, NY, USA
+<div class="location">Working in Berlin, DE and NYC, USA</div>
+<div class="email">c.buerhaus@gmail.com</div>
         </div>
 
         <div class="organization-toggle">
@@ -218,7 +33,7 @@
             <div class="section-title" onclick="toggleSection(this)">Exhibition</div>
             <div class="section-content">
                 <div class="entry" style="margin-bottom: 2px;">
-                    <span class="entry-year">2026</span><a href="" target="_blank">Eden,</a> <span class="venue">Kim? Contemporary Art Centre</span>, Riga, Latvia <span class="parenthetical">group</span>
+                    <span class="entry-year">2026</span><a href="https://kim.lv/en/" target="_blank">Eden,</a> <span class="venue">Kim? Contemporary Art Centre</span>, Riga, Latvia <span class="parenthetical">group</span>
                 </div>
                 <div class="entry" style="margin-bottom: 2px;">
                     <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -236,7 +51,7 @@
                 </div>
                      <div class="entry" style="margin-bottom: 2px;">
                     <span class="entry-year"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="" target="_blank">Fortran Muscle,</a> <span class="venue">Stooge</span>, Berlin, DE <span class="parenthetical">group</span>
+                    <a href="http://www.stooge.eu/" target="_blank">Fortran Muscle,</a> <span class="venue">Stooge</span>, Berlin, DE <span class="parenthetical">group</span>
                 </div>
            
                 <div class="entry" style="margin-bottom: 2px;">
