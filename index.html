@@ -710,18 +710,26 @@
             document.getElementById('yearBtn').classList.add('active');
         }
 
-        // Initialize all sections as collapsed
+        // Initialize all sections as collapsed except About
         document.addEventListener('DOMContentLoaded', function() {
             const contents = document.querySelectorAll('.section-content');
             const titles = document.querySelectorAll('.section-title');
             
-            contents.forEach(content => {
-                content.classList.add('collapsed');
-                content.style.maxHeight = '0px';
+            contents.forEach((content, index) => {
+                // Keep About section (first section) open
+                if (index === 0) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.classList.add('collapsed');
+                    content.style.maxHeight = '0px';
+                }
             });
             
-            titles.forEach(title => {
-                title.classList.add('collapsed');
+            titles.forEach((title, index) => {
+                // Keep About section title not collapsed
+                if (index !== 0) {
+                    title.classList.add('collapsed');
+                }
             });
         });
     </script>
