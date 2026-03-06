@@ -897,16 +897,6 @@
 
         // Initialize all sections as collapsed
         document.addEventListener('DOMContentLoaded', function() {
-            // Check URL parameters for view preference
-            const urlParams = new URLSearchParams(window.location.search);
-            const view = urlParams.get('view');
-            
-            if (view === 'year') {
-                showYearView();
-            } else {
-                showCategoryView();
-            }
-            
             const contents = document.querySelectorAll('.section-content');
             const titles = document.querySelectorAll('.section-title');
             
