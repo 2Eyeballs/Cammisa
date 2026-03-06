@@ -201,8 +201,8 @@
         </div>
 
         <div class="organization-toggle">
-            <button class="toggle-button active" id="categoryBtn" onclick="showCategoryView()">CV - Category</button>
-            <button class="toggle-button" id="yearBtn" onclick="showYearView()">CV - Year</button>
+            <button class="toggle-button active" id="categoryBtn" onclick="showCategoryView()">CV by Category</button>
+            <button class="toggle-button" id="yearBtn" onclick="showYearView()">CV by Year</button>
             <a href="/blog_public/" class="toggle-button" style="display: inline-block; text-decoration: none; text-align: center;">Blog</a>
         </div>
 
@@ -897,6 +897,16 @@
 
         // Initialize all sections as collapsed
         document.addEventListener('DOMContentLoaded', function() {
+            // Check URL parameters for view preference
+            const urlParams = new URLSearchParams(window.location.search);
+            const view = urlParams.get('view');
+            
+            if (view === 'year') {
+                showYearView();
+            } else {
+                showCategoryView();
+            }
+            
             const contents = document.querySelectorAll('.section-content');
             const titles = document.querySelectorAll('.section-title');
             
