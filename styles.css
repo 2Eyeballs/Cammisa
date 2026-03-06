@@ -1,3 +1,10 @@
+/* CSS Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background: white;
@@ -5,6 +12,7 @@ body {
     padding: 40px 20px;
     color: #666666;
     line-height: 1.4;
+    font-size: 16px; /* Explicit base font size */
 }
 .container {
     max-width: 800px;
@@ -21,22 +29,25 @@ body {
     letter-spacing: 4px;
     margin-bottom: 10px;
     color: #ff1493;
+    line-height: 1.2;
 }
 .location {
     font-size: 1rem;
     margin-bottom: 5px;
     color: #cccccc;
-    line-height: 1.4;
+    line-height: 1.2;
 }
 .year {
     font-size: 1rem;
     margin-bottom: 5px;
     color: #cccccc;
+    line-height: 1.2;
 }
 .email {
     font-size: 1em;
     margin-bottom: 30px;
     color: #cccccc;
+    line-height: 1.2;
 }
 .section {
     margin-bottom: 35px;
