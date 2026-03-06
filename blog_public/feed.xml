@@ -1,25 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://cammisabuer.haus/blog_public/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cammisabuer.haus/blog_public/" rel="alternate" type="text/html" /><updated>2026-03-06T16:11:38+01:00</updated><id>https://cammisabuer.haus/blog_public/feed.xml</id><title type="html">Cammisa Buerhaus Blog</title><subtitle>Writing and reflections</subtitle><author><name>Cammisa Buerhaus</name></author><entry><title type="html">Almost my Birthday</title><link href="https://cammisabuer.haus/blog_public/2026/03/06/birthday/" rel="alternate" type="text/html" title="Almost my Birthday" /><published>2026-03-06T04:09:00+01:00</published><updated>2026-03-06T04:09:00+01:00</updated><id>https://cammisabuer.haus/blog_public/2026/03/06/birthday</id><content type="html" xml:base="https://cammisabuer.haus/blog_public/2026/03/06/birthday/"><![CDATA[<h2 id="this-is-my-first-blog-post">This is my first blog post.</h2>
-
-<p>It’s actually my sixtieth blog post, as I used to keep a tumblr.</p>
-
-<p>Why I hate my birthday:</p>
-<ul>
-  <li>love? for me?! how dare you</li>
-  <li>what have I done with my life?</li>
-  <li>what am I doing with my life?</li>
-</ul>
-
-<p>Why I love my birthday:</p>
-<ul>
-  <li>my friends will come to my birthday party</li>
-  <li>they will be happy</li>
-  <li>steven warwick will sing me a song</li>
-</ul>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_world</span>
-  <span class="nb">puts</span> <span class="s2">"Hello from Jekyll!"</span>
-<span class="k">end</span>
-</code></pre></div></div>]]></content><author><name>Cammisa Buerhaus</name></author><category term="writing" /><summary type="html"><![CDATA[This is my first blog post.]]></summary></entry><entry><title type="html">Almost my Birthday</title><link href="https://cammisabuer.haus/blog_public/2026/03/06/almost-birthday/" rel="alternate" type="text/html" title="Almost my Birthday" /><published>2026-03-06T03:51:00+01:00</published><updated>2026-03-06T03:51:00+01:00</updated><id>https://cammisabuer.haus/blog_public/2026/03/06/almost-birthday</id><content type="html" xml:base="https://cammisabuer.haus/blog_public/2026/03/06/almost-birthday/"><![CDATA[<h2 id="this-is-my-first-blog-post">This is my first blog post.</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://cammisabuer.haus/blog_public/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cammisabuer.haus/blog_public/" rel="alternate" type="text/html" /><updated>2026-03-06T16:26:58+01:00</updated><id>https://cammisabuer.haus/blog_public/feed.xml</id><title type="html">Cammisa Buerhaus Blog</title><subtitle>Writing and reflections</subtitle><author><name>Cammisa Buerhaus</name></author><entry><title type="html">Almost my Birthday</title><link href="https://cammisabuer.haus/blog_public/2026/03/06/birthday/" rel="alternate" type="text/html" title="Almost my Birthday" /><published>2026-03-06T04:09:00+01:00</published><updated>2026-03-06T04:09:00+01:00</updated><id>https://cammisabuer.haus/blog_public/2026/03/06/birthday</id><content type="html" xml:base="https://cammisabuer.haus/blog_public/2026/03/06/birthday/"><![CDATA[<h2 id="this-is-my-first-blog-post">This is my first blog post.</h2>
 
 <p>It’s actually my sixtieth blog post, as I used to keep a tumblr.</p>
 
