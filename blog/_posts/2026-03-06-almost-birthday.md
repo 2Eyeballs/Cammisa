@@ -1,22 +1,25 @@
 ---
 layout: post
 title:  "Almost my Birthday"
-date:   2026-02-22 10:00:00 -0500
+date:   2026-03-06 3:51:00 Berlin, DE -0500
 categories: writing
 ---
 
-This is my first blog post. You can write in **Markdown** format.
 
 ## This is my first blog post.
 
-It's actually my 50th or sixtieth blog post, as I used to keep a tumblr. 
+It's actually my sixtieth blog post, as I used to keep a tumblr. 
 
-## Headers work like this
 
-You can add:
-- Bullet points
-- Images
-- Code blocks
+Why I hate my birthday:
+- love? for me?! how dare you
+- what have I done with my life?
+- what am I doing with my life?
+
+Why I love my birthday:
+- my friends will come to my birthday party
+- they will be happy 
+- steven warwick will sing me a song
 
 ```ruby
 def hello_world
@@ -24,6 +27,3 @@ def hello_world
 end
 ```
 
-To create a new post, add a file in the `_posts` directory with the format `YEAR-MONTH-DAY-title.md`. 
-
-Edit this post or delete it and create your own!
