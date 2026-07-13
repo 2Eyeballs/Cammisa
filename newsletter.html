@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Cammisa Buerhaus</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .newsletter-section {
+            margin-bottom: 40px;
+        }
+        .newsletter-section h2 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #666666;
+        }
+        .substack-signup {
+            margin-bottom: 50px;
+        }
+        .substack-signup iframe {
+            max-width: 100%;
+            border: 1px solid #eeeeee;
+            background: white;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .post-list li {
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .post-list li:last-child {
+            border-bottom: none;
+        }
+        .post-list a {
+            color: #666666;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .post-list a:hover {
+            color: #ff1493;
+        }
+        .post-meta {
+            display: block;
+            font-size: 0.85rem;
+            color: #cccccc;
+            margin-top: 3px;
+        }
+        .post-excerpt {
+            font-size: 0.9rem;
+            color: #999999;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+        .loading {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+        .error-msg {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="name">CAMMISA BUERHAUS</div>
+            <div class="location">b. New Kingston, NY, USA</div>
+            <div class="location">Working in Berlin, DE and NYC, USA</div>
+            <div class="email">c.buerhaus@gmail.com</div>
+        </div>
+
+        <div class="organization-toggle">
+            <a href="/" class="toggle-button">CV by Category</a>
+            <a href="/?view=year" class="toggle-button">CV by Year</a>
+            <a href="/newsletter.html" class="toggle-button active">Blog</a>
+        </div>
+
+        <div class="newsletter-section substack-signup">
+            <h2>Subscribe</h2>
+            <iframe src="https://cammisabuerhaus.substack.com/embed"
+                width="480"
+                height="150"
+                frameborder="0"
+                scrolling="no"
+                title="Subscribe to Cammisa Buerhaus on Substack">
+            </iframe>
+        </div>
+
+        <div class="newsletter-section">
+            <h2>Posts</h2>
+            <ul class="post-list" id="post-list">
+                <li class="loading">Loading posts&hellip;</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var feedUrl = 'https://cammisabuerhaus.substack.com/feed';
+            var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
+
+            fetch(apiUrl)
+                .then(function (res) {
+                    if (!res.ok) throw new Error('Network response was not ok');
+                    return res.json();
+                })
+                .then(function (data) {
+                    var list = document.getElementById('post-list');
+                    if (!data.items || data.items.length === 0) {
+                        list.innerHTML = '<li class="error-msg">No posts found.</li>';
+                        return;
+                    }
+                    list.innerHTML = data.items.map(function (item) {
+                        var date = item.pubDate ? new Date(item.pubDate) : null;
+                        var dateStr = date
+                            ? date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+                            : '';
+                        var excerpt = item.description
+                            ? item.description.replace(/<[^>]+>/g, '').trim().slice(0, 180)
+                            : '';
+                        if (excerpt.length === 180) excerpt += '&hellip;';
+                        return '<li>'
+                            + '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer">' + item.title + '</a>'
+                            + (dateStr ? '<span class="post-meta">' + dateStr + '</span>' : '')
+                            + (excerpt ? '<p class="post-excerpt">' + excerpt + '</p>' : '')
+                            + '</li>';
+                    }).join('');
+                })
+                .catch(function () {
+                    var list = document.getElementById('post-list');
+                    list.innerHTML = '<li class="error-msg">Could not load posts. <a href="https://cammisabuerhaus.substack.com" target="_blank" rel="noopener noreferrer">Visit Substack directly</a>.</li>';
+                });
+        })();
+    </script>
+</body>
+</html>
