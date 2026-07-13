@@ -105,7 +105,7 @@
     <script>
         (function () {
             var feedUrl = 'https://cammisabuerhaus.substack.com/feed';
-            var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
+            var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl) + '&api_key=gfpcwnhzsze5gtpwmpimngra5vzxoqzbsrw5tmme';
 
             fetch(apiUrl)
                 .then(function (res) {
