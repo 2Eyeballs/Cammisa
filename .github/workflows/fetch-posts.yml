@@ -36,6 +36,7 @@ jobs:
               --retry 5 \
               --retry-delay 3 \
               --retry-connrefused \
+              --retry-all-errors \
               --connect-timeout 20 \
               --max-time 90 \
               -A "Mozilla/5.0 (compatible; CammisaFeedBot/1.0; +https://github.com/2Eyeballs/Cammisa)" \
@@ -58,8 +59,13 @@ jobs:
           done
 
           if [[ "$fetch_ok" -ne 1 ]]; then
-            echo "Feed unavailable from all attempted URLs; aborting run to avoid silent stale content"
-            exit 1
+            if [[ -f posts.json ]]; then
+              echo "Feed unavailable from all attempted URLs; keeping existing posts.json"
+              exit 0
+            else
+              echo "Feed unavailable from all attempted URLs and no existing posts.json; aborting"
+              exit 1
+            fi
           fi
 
           export FETCH_FORMAT="$fetch_format"
