@@ -23,7 +23,42 @@ jobs:
       - name: Fetch RSS and save posts.json
         run: |
           set -euo pipefail
-          curl -fsSL --retry 5 --retry-delay 3 --retry-connrefused "https://cammisabuerhaus.substack.com/feed" > feed.xml
+
+          fetch_ok=0
+          for url in \
+            "https://cammisabuerhaus.substack.com/feed" \
+            "https://cammisabuerhaus.substack.com/feed?output=rss"
+          do
+            echo "Attempting feed URL: $url"
+            http_code=$(curl -sS -L \
+              --retry 5 \
+              --retry-delay 3 \
+              --retry-connrefused \
+              --connect-timeout 20 \
+              --max-time 90 \
+              -A "Mozilla/5.0 (compatible; CammisaFeedBot/1.0; +https://github.com/2Eyeballs/Cammisa)" \
+              -o feed.xml \
+              -w "%{http_code}" \
+              "$url" || true)
+
+            if [[ "$http_code" == "200" ]] && [[ -s feed.xml ]]; then
+              fetch_ok=1
+              echo "Feed fetch succeeded from $url"
+              break
+            fi
+
+            echo "Feed fetch failed from $url (HTTP ${http_code:-unknown})"
+          done
+
+          if [[ "$fetch_ok" -ne 1 ]]; then
+            if [[ -f posts.json ]]; then
+              echo "Feed unavailable; preserving existing posts.json"
+              exit 0
+            fi
+            echo "Feed unavailable and posts.json does not exist"
+            exit 1
+          fi
+
           python3 - <<'PY'
           import hashlib
           import json
