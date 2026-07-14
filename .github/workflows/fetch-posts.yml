@@ -25,9 +25,11 @@ jobs:
           set -euo pipefail
 
           fetch_ok=0
+          fetch_format="rss"
           for url in \
             "https://cammisabuerhaus.substack.com/feed" \
-            "https://cammisabuerhaus.substack.com/feed?output=rss"
+            "https://cammisabuerhaus.substack.com/feed?output=rss" \
+            "https://cammisabuerhaus.substack.com/api/v1/posts"
           do
             echo "Attempting feed URL: $url"
             http_code=$(curl -sS -L \
@@ -43,6 +45,11 @@ jobs:
 
             if [[ "$http_code" == "200" ]] && [[ -s feed.xml ]]; then
               fetch_ok=1
+              if [[ "$url" == *"/api/v1/posts"* ]]; then
+                fetch_format="json"
+              else
+                fetch_format="rss"
+              fi
               echo "Feed fetch succeeded from $url"
               break
             fi
@@ -55,6 +62,7 @@ jobs:
             exit 1
           fi
 
+          export FETCH_FORMAT="$fetch_format"
           python3 - <<'PY'
           import hashlib
           import json
@@ -68,44 +76,60 @@ jobs:
           if not data.strip():
               raise SystemExit('Empty RSS response; keeping existing posts.json')
 
-          # RSS responses can occasionally include invalid XML control chars.
-          # Strip only illegal XML 1.0 code points to avoid parser crashes.
-          data = re.sub(
-              r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]',
-              '',
-              data,
-            )
-
-          try:
-              root = ET.fromstring(data)
-          except ET.ParseError as exc:
-              if os.path.exists('posts.json'):
-                print(f'RSS parse error ({exc}); preserving existing posts.json')
-                raise SystemExit(0)
-              raise SystemExit(f'RSS parse error and no existing posts.json: {exc}')
-
-          ns = {'content': 'http://purl.org/rss/1.0/modules/content/'}
-          items = root.findall('.//item')
-
           posts = []
-          for item in items:
-              t = item.find('title')
-              l = item.find('link')
-              d = item.find('pubDate')
-              desc = item.find('description')
-              body = item.find('content:encoded', ns)
 
-              title = t.text if t is not None and t.text else ''
-              if title.startswith('[COPY]'):
-                  continue
+          fetch_format = os.getenv('FETCH_FORMAT', 'rss')
+          if fetch_format == 'json':
+              raw_posts = json.loads(data)
+              for item in raw_posts:
+                  title = item.get('title') or ''
+                  if title.startswith('[COPY]'):
+                      continue
+                  posts.append({
+                      'title': title,
+                      'link': item.get('canonical_url') or '',
+                      'pubDate': item.get('post_date') or '',
+                      'description': item.get('description') or '',
+                      'content': item.get('body_html') or ''
+                  })
+          else:
+              # RSS responses can occasionally include invalid XML control chars.
+              # Strip only illegal XML 1.0 code points to avoid parser crashes.
+              data = re.sub(
+                  r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]',
+                  '',
+                  data,
+                )
 
-              posts.append({
-                  'title': title,
-                  'link': l.text.strip() if l is not None and l.text else '',
-                  'pubDate': d.text if d is not None and d.text else '',
-                  'description': desc.text if desc is not None and desc.text else '',
-                  'content': body.text if body is not None and body.text else ''
-              })
+              try:
+                  root = ET.fromstring(data)
+              except ET.ParseError as exc:
+                  if os.path.exists('posts.json'):
+                      print(f'RSS parse error ({exc}); preserving existing posts.json')
+                      raise SystemExit(0)
+                  raise SystemExit(f'RSS parse error and no existing posts.json: {exc}')
+
+              ns = {'content': 'http://purl.org/rss/1.0/modules/content/'}
+              items = root.findall('.//item')
+
+              for item in items:
+                  t = item.find('title')
+                  l = item.find('link')
+                  d = item.find('pubDate')
+                  desc = item.find('description')
+                  body = item.find('content:encoded', ns)
+
+                  title = t.text if t is not None and t.text else ''
+                  if title.startswith('[COPY]'):
+                      continue
+
+                  posts.append({
+                      'title': title,
+                      'link': l.text.strip() if l is not None and l.text else '',
+                      'pubDate': d.text if d is not None and d.text else '',
+                      'description': desc.text if desc is not None and desc.text else '',
+                      'content': body.text if body is not None and body.text else ''
+                  })
 
           if not posts:
               raise SystemExit('No valid posts parsed from RSS; refusing to overwrite posts.json')
