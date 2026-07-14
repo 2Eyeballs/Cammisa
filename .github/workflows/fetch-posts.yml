@@ -51,11 +51,7 @@ jobs:
           done
 
           if [[ "$fetch_ok" -ne 1 ]]; then
-            if [[ -f posts.json ]]; then
-              echo "Feed unavailable; preserving existing posts.json"
-              exit 0
-            fi
-            echo "Feed unavailable and posts.json does not exist"
+            echo "Feed unavailable from all attempted URLs; aborting run to avoid silent stale content"
             exit 1
           fi
 
