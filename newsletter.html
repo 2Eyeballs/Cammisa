@@ -397,7 +397,7 @@
 
     <script>
         (function () {
-            fetch('/posts.json')
+            fetch('/posts.json?v=' + Date.now(), { cache: 'no-store' })
                 .then(function (res) {
                     if (!res.ok) throw new Error('Failed to load posts.json');
                     return res.json();

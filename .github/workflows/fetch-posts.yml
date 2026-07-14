@@ -2,8 +2,12 @@ name: Fetch Substack Posts
 
 on:
   schedule:
-    - cron: '0 * * * *'   # every hour
+    - cron: '*/30 * * * *'   # every 30 minutes
   workflow_dispatch:       # allow manual trigger from GitHub UI
+
+concurrency:
+  group: fetch-substack-posts
+  cancel-in-progress: true
 
 jobs:
   fetch-posts:
@@ -12,17 +16,46 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Fetch RSS and save posts.json
         run: |
-          curl -s "https://cammisabuerhaus.substack.com/feed" | python3 -c "
-          import sys, json
+          set -euo pipefail
+          curl -fsSL --retry 5 --retry-delay 3 --retry-connrefused "https://cammisabuerhaus.substack.com/feed" > feed.xml
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import re
           from xml.etree import ElementTree as ET
-          data = sys.stdin.read()
-          root = ET.fromstring(data)
+
+          with open('feed.xml', 'r', encoding='utf-8') as f:
+              data = f.read()
+
+          if not data.strip():
+              raise SystemExit('Empty RSS response; keeping existing posts.json')
+
+          # RSS responses can occasionally include invalid XML control chars.
+          # Strip only illegal XML 1.0 code points to avoid parser crashes.
+          data = re.sub(
+              r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]',
+              '',
+              data,
+            )
+
+          try:
+              root = ET.fromstring(data)
+          except ET.ParseError as exc:
+              if os.path.exists('posts.json'):
+                print(f'RSS parse error ({exc}); preserving existing posts.json')
+                raise SystemExit(0)
+              raise SystemExit(f'RSS parse error and no existing posts.json: {exc}')
+
           ns = {'content': 'http://purl.org/rss/1.0/modules/content/'}
           items = root.findall('.//item')
+
           posts = []
           for item in items:
               t = item.find('title')
@@ -30,23 +63,53 @@ jobs:
               d = item.find('pubDate')
               desc = item.find('description')
               body = item.find('content:encoded', ns)
-              title = t.text if t is not None else ''
+
+              title = t.text if t is not None and t.text else ''
               if title.startswith('[COPY]'):
                   continue
+
               posts.append({
                   'title': title,
-                  'link': l.text.strip() if l is not None else '',
-                  'pubDate': d.text if d is not None else '',
-                  'description': desc.text if desc is not None else '',
-                  'content': body.text if body is not None else ''
+                  'link': l.text.strip() if l is not None and l.text else '',
+                  'pubDate': d.text if d is not None and d.text else '',
+                  'description': desc.text if desc is not None and desc.text else '',
+                  'content': body.text if body is not None and body.text else ''
               })
-          print(json.dumps({'items': posts}, ensure_ascii=False, indent=2))
-          " > posts.json
+
+          if not posts:
+              raise SystemExit('No valid posts parsed from RSS; refusing to overwrite posts.json')
+
+          payload = {'items': posts}
+          encoded = json.dumps(payload, ensure_ascii=False, indent=2)
+          with open('posts.json', 'w', encoding='utf-8') as f:
+              f.write(encoded)
+              f.write('\n')
+
+          digest = hashlib.sha256(encoded.encode('utf-8')).hexdigest()
+          print(f'Parsed {len(posts)} post(s). sha256={digest}')
+          for post in posts[:5]:
+              print(f"- {post['title']}")
+          PY
+
+      - name: Verify generated JSON
+        run: |
+          python3 - <<'PY'
+          import json
+          with open('posts.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          assert isinstance(data, dict) and isinstance(data.get('items'), list)
+          print('posts.json verified with', len(data['items']), 'item(s)')
+          PY
 
       - name: Commit and push if changed
         run: |
+          set -euo pipefail
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git add posts.json
-          git diff --staged --quiet || git commit -m "chore: update posts.json"
-          git push
+          if git diff --staged --quiet; then
+            echo "No posts.json changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update posts.json"
+          git push origin HEAD
