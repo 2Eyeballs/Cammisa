@@ -80,7 +80,7 @@ jobs:
               data = f.read()
 
           if not data.strip():
-              raise SystemExit('Empty RSS response; keeping existing posts.json')
+              raise SystemExit('Empty RSS/JSON response; aborting to avoid stale posts.json')
 
           posts = []
 
@@ -110,10 +110,7 @@ jobs:
               try:
                   root = ET.fromstring(data)
               except ET.ParseError as exc:
-                  if os.path.exists('posts.json'):
-                      print(f'RSS parse error ({exc}); preserving existing posts.json')
-                      raise SystemExit(0)
-                  raise SystemExit(f'RSS parse error and no existing posts.json: {exc}')
+                  raise SystemExit(f'RSS parse error; aborting to avoid stale posts.json: {exc}')
 
               ns = {'content': 'http://purl.org/rss/1.0/modules/content/'}
               items = root.findall('.//item')
