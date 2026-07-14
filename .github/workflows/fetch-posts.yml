@@ -27,9 +27,9 @@ jobs:
           fetch_ok=0
           fetch_format="rss"
           for url in \
+            "https://cammisabuerhaus.substack.com/api/v1/posts" \
             "https://cammisabuerhaus.substack.com/feed" \
-            "https://cammisabuerhaus.substack.com/feed?output=rss" \
-            "https://cammisabuerhaus.substack.com/api/v1/posts"
+            "https://cammisabuerhaus.substack.com/feed?output=rss"
           do
             echo "Attempting feed URL: $url"
             http_code=$(curl -sS -L \
@@ -59,13 +59,8 @@ jobs:
           done
 
           if [[ "$fetch_ok" -ne 1 ]]; then
-            if [[ -f posts.json ]]; then
-              echo "Feed unavailable from all attempted URLs; keeping existing posts.json"
-              exit 0
-            else
-              echo "Feed unavailable from all attempted URLs and no existing posts.json; aborting"
-              exit 1
-            fi
+            echo "Feed unavailable from all attempted URLs; aborting to avoid stale posts.json"
+            exit 1
           fi
 
           export FETCH_FORMAT="$fetch_format"
