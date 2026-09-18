@@ -1,0 +1,113 @@
+name: Sync Substack Posts (Webhook)
+
+on:
+  repository_dispatch:
+    types: [substack_post_published]
+
+jobs:
+  sync-post:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Fetch latest Substack posts
+        run: |
+          set -euo pipefail
+          
+          echo "Fetching latest posts from Substack feed..."
+          
+          # Try to fetch from Substack directly (now that we know it's published)
+          http_code=$(curl -sS -L \
+            --retry 2 \
+            --retry-delay 1 \
+            --connect-timeout 15 \
+            --max-time 60 \
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
+            -H "Accept: application/rss+xml, application/xml, text/xml" \
+            -H "Accept-Language: en-US,en;q=0.9" \
+            -H "Connection: keep-alive" \
+            --compressed \
+            -o feed.xml \
+            -w "%{http_code}" \
+            "https://cammisabuerhaus.substack.com/feed" 2>&1 || true)
+          
+          if [[ "$http_code" != "200" ]] || [[ ! -s feed.xml ]]; then
+            echo "⚠ Direct Substack fetch failed (HTTP ${http_code:-unknown})"
+            echo "Using payload from webhook instead..."
+            exit 0
+          fi
+          
+          echo "✓ Feed fetch succeeded (HTTP $http_code)"
+          
+          # Parse RSS and update posts.json
+          python3 - <<'PY'
+          import json
+          import re
+          from xml.etree import ElementTree as ET
+          
+          with open('feed.xml', 'r', encoding='utf-8') as f:
+              data = f.read()
+          
+          # Strip illegal XML control chars
+          data = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', data)
+          
+          try:
+              root = ET.fromstring(data)
+          except ET.ParseError as exc:
+              print(f'RSS parse error: {exc}')
+              exit(1)
+          
+          ns = {'content': 'http://purl.org/rss/1.0/modules/content/'}
+          items = root.findall('.//item')
+          
+          posts = []
+          for item in items:
+              t = item.find('title')
+              l = item.find('link')
+              d = item.find('pubDate')
+              desc = item.find('description')
+              body = item.find('content:encoded', ns)
+              
+              title = t.text if t is not None and t.text else ''
+              if title.startswith('[COPY]'):
+                  continue
+              
+              posts.append({
+                  'title': title,
+                  'link': l.text.strip() if l is not None and l.text else '',
+                  'pubDate': d.text if d is not None and d.text else '',
+                  'description': desc.text if desc is not None and desc.text else '',
+                  'content': body.text if body is not None and body.text else ''
+              })
+          
+          if not posts:
+              print('No posts parsed')
+              exit(1)
+          
+          payload = {'items': posts}
+          with open('posts.json', 'w', encoding='utf-8') as f:
+              json.dump(payload, f, ensure_ascii=False, indent=2)
+              f.write('\n')
+          
+          print(f'✓ Updated posts.json with {len(posts)} post(s)')
+          for post in posts[:3]:
+              print(f"  - {post['title'][:60]}")
+          PY
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add posts.json
+          if git diff --staged --quiet; then
+            echo "No changes to posts.json"
+            exit 0
+          fi
+          git commit -m "chore: sync new Substack post via webhook"
+          git push origin HEAD
