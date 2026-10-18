@@ -111,6 +111,35 @@ body {
     font-style: italic;
     font-size: 0.9rem;
 }
+.parenthetical-2 {
+    color: #a93e3e;
+    font-size: 0.85rem;
+    font-style: normal;
+    line-height: 1.5;
+}
+.parenthetical-2 .venue,
+.parenthetical-2 .parenthetical {
+    color: inherit;
+    font-style: normal;
+}
+.selected-performances-section {
+    margin-top: 6px;
+}
+.selected-performances-section .section-title {
+    margin-bottom: 18px;
+}
+.selected-performances-section .sub-entry,
+.selected-performances-section .parenthetical-2 {
+    color: #b9b9b9;
+    font-size: 0.83rem;
+    font-style: normal;
+    line-height: 1.5;
+}
+.selected-performances-section .sub-entry .venue,
+.selected-performances-section .parenthetical-2 .venue {
+    color: inherit;
+    font-style: normal;
+}
 .bio-text {
     font-size: 0.9rem;
     line-height: 1.6;
@@ -182,8 +211,17 @@ a.toggle-button {
 .year-view {
     display: none;
 }
+.year-view:not(.hidden) {
+    display: block;
+}
 .category-view {
     display: block;
+}
+.category-view.hidden {
+    display: none;
+}
+.hidden {
+    display: none !important;
 }
 .year-section {
     margin-bottom: 25px;
