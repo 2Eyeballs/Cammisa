@@ -349,15 +349,15 @@ pre code {
 }
 .recent-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
 }
 .recent-thumb {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     aspect-ratio: 4 / 3;
-    padding: 14px;
+    padding: 8px;
     background: #f4f4f4;
     border: 1px solid #eeeeee;
     text-decoration: none;
@@ -368,10 +368,10 @@ pre code {
     aspect-ratio: 3 / 4;
 }
 .wide .recent-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 @media (max-width: 640px) {
-    .wide .recent-grid { grid-template-columns: repeat(2, 1fr); }
+    .wide .recent-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 420px) {
     .wide .recent-grid { grid-template-columns: 1fr; }
@@ -387,6 +387,12 @@ pre code {
     min-height: 0;
     object-fit: cover;
     margin-bottom: 10px;
+}
+.eden-top img {
+    object-position: 50% 12%;
+}
+.tvnet-top img {
+    object-position: top center;
 }
 .recent-thumb-label {
     font-size: 0.7rem;
