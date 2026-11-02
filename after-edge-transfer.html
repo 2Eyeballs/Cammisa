@@ -225,14 +225,14 @@
         };
         
         // Pool of images from recent-assets; a random pair is picked on every page load
-        const D = 'recent-assets/performances/desintegration-2026/2026_09_Mies van der Roche_Erika Landstroem_Fot. Joanna Wilk_Performance_';
+        const D = 'recent-assets/_edge/performances/desintegration-2026/2026_09_Mies van der Roche_Erika Landstroem_Fot. Joanna Wilk_Performance_';
         const imagePool = [
             ...Array.from({ length: 11 }, (_, i) => `${D}${i + 1} Large.jpeg`),
-            ...['105 copy', '112 copy', '122_crop copy', '133-Recovered copy'].map(n => `recent-assets/performances/the-maze-2026/Maze at Adlon/Ordinary-tales-of-city-madness-adlon-${n}.jpg`),
+            ...['105 copy', '112 copy', '122_crop copy', '133-Recovered copy'].map(n => `recent-assets/_edge/performances/the-maze-2026/Maze at Adlon/Ordinary-tales-of-city-madness-adlon-${n}.jpg`),
             ...Array.from({ length: 10 }, (_, i) => `recent-assets/press/press-tvnet-2026/Pg${i + 1}.jpg`),
-            'recent-assets/exhibitions/chb-2026/Buerhaus McGrath CHB copy/005-1.jpg',
-            'recent-assets/exhibitions/chb-2026/Buerhaus McGrath CHB copy/0061.jpg',
-            'recent-assets/exhibitions/program23-2026/NightsLikeThis_Documentation_Program23_StoogBerlinDE2026.jpg'
+            'recent-assets/_edge/exhibitions/chb-2026/Buerhaus McGrath CHB copy/005-1.jpg',
+            'recent-assets/_edge/exhibitions/chb-2026/Buerhaus McGrath CHB copy/0061.jpg',
+            'recent-assets/_edge/exhibitions/program23-2026/NightsLikeThis_Documentation_Program23_StoogBerlinDE2026.jpg'
         ];
 
         function pickRandomPair(pool) {
