@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="/styles.css?v=3">
 </head>
 <body>
+    <iframe id="edge-overlay" src="/edge-transfer-recreation.html" title="Recent works" style="position:fixed;inset:0;width:100%;height:100%;border:0;z-index:1000;background:#000;"></iframe>
+    <script>
+        window.addEventListener('message', function (e) {
+            if (e.origin === location.origin && e.data === 'edge-transfer-dismiss') {
+                document.getElementById('edge-overlay').remove();
+            }
+        });
+    </script>
     <div class="container">
         <div class="header">
             <div class="name">CAMMISA BUERHAUS</div>
